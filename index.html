@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Place Order – Distributor</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="container">
+    <h1>Place Your Order</h1>
+    <p class="subtitle">Select products, set quantities, and submit your order.</p>
+  </header>
+
+  <main class="container">
+    <section class="retailer">
+      <label for="retailerName">Retailer / Shop Name</label>
+      <input id="retailerName" type="text" placeholder="e.g., Ganesh Provision Stores" />
+    </section>
+
+    <section class="products">
+      <div class="products-head">
+        <h2>Products</h2>
+        <p class="hint">Images are optional. You can add/replace image URLs later in <code>products.sample.json</code>.</p>
+      </div>
+      <div id="productList" class="product-list" aria-live="polite"></div>
+    </section>
+
+    <section class="cart">
+      <h2>Order Summary</h2>
+      <div id="cartItems" class="cart-items empty">No items yet.</div>
+      <div class="cart-footer">
+        <div class="total">
+          <span>Total</span>
+          <strong id="grandTotal">₹0.00</strong>
+        </div>
+        <button id="submitBtn" class="primary" disabled>Submit Order</button>
+      </div>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <small>© <span id="year"></span> Distributor RMS (MVP)</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

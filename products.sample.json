@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Atta (10kg)",
+    "price": 450,
+    "unit": "bag",
+    "imageUrl": ""
+  },
+  {
+    "id": 2,
+    "name": "Rice (25kg)",
+    "price": 1300,
+    "unit": "bag",
+    "imageUrl": ""
+  },
+  {
+    "id": 3,
+    "name": "Sugar (5kg)",
+    "price": 260,
+    "unit": "bag",
+    "imageUrl": ""
+  },
+  {
+    "id": 4,
+    "name": "Cooking Oil (1L)",
+    "price": 140,
+    "unit": "bottle",
+    "imageUrl": ""
+  }
+]

@@ -1,0 +1,147 @@
+/* Minimal, clean styles with image support (updated for compact grid + sticky mobile) */
+:root { --accent:#2563eb; --bg:#0b1324; --card:#111a2b; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2a44; }
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu;
+  line-height:1.4;
+  color:var(--text);
+  background:linear-gradient(180deg,#0b1324,#090f1c 60%)
+}
+.container{width:min(1100px,92%);margin-inline:auto}
+
+/* Header → make it compact and sticky on smaller screens */
+header{
+  padding:14px 0 8px;
+  position:relative;
+}
+@media (max-width: 880px){
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:linear-gradient(180deg,#0e1629,#0c1424);
+    border-bottom:1px solid var(--border);
+    backdrop-filter:saturate(180%) blur(6px);
+  }
+}
+
+h1{margin:0 0 6px;font-size:22px}
+.subtitle{margin:0;color:var(--muted);font-size:13px}
+
+/* Layout: give more space to products */
+main{
+  display:grid;
+  grid-template-columns:1.2fr 0.8fr;
+  gap:18px;
+  padding:10px 0 80px; /* bottom space for mobile bar */
+}
+@media (max-width: 880px){
+  main{grid-template-columns:1fr;}
+}
+
+/* Cards */
+.products,.cart,.retailer{
+  background:linear-gradient(180deg,#0e1629,#0c1424);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:12px;
+  box-shadow:0 8px 30px rgba(0,0,0,.25)
+}
+.products h2,.cart h2{margin:4px 0 10px;font-size:18px}
+.products .hint{margin:0;color:var(--muted);font-size:12px}
+
+/* Add this */
+.retailer {
+  grid-column: 1 / -1;  /* span across both columns → gets its own row */
+}
+
+
+/* Retailer → smaller so products get more room */
+.retailer label{display:block;margin-bottom:6px;color:var(--muted);font-size:12px}
+.retailer input{
+  width:100%;
+  padding:10px 11px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:#0a1120;color:var(--text)
+}
+.retailer input:focus{outline:2px solid rgba(37,99,235,.5);}
+
+/* Product grid → denser for 10–50 products */
+.product-list{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:10px
+}
+
+/* Product card → smaller, cart-like image */
+.product{
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:10px;
+  background:#0a1120;
+  display:grid;
+  grid-template-rows:auto auto auto;
+  gap:6px
+}
+.product .imgbox{
+  width:100%;
+  aspect-ratio:1/1;           /* square thumbnails */
+  max-height:90px;            /* small, cart-like */
+  background:#0b162b;
+  border:1px solid var(--border);
+  border-radius:8px;
+  overflow:hidden;
+  display:flex;align-items:center;justify-content:center
+}
+.product img{width:100%;height:100%;object-fit:cover;display:block}
+.product .placeholder{
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--muted);font-size:11px
+}
+.product .name{font-weight:600;font-size:14px;min-height:34px}
+.product .price{color:var(--muted);font-size:12px}
+
+/* Quantity controls → slightly smaller */
+.qty{display:flex;align-items:center;gap:8px;margin-top:2px}
+.qty button{
+  width:28px;height:28px;border-radius:8px;border:1px solid var(--border);
+  background:#0d1830;color:var(--text);font-size:18px;line-height:1
+}
+.qty input{
+  width:48px;text-align:center;padding:6px;border-radius:8px;border:1px solid var(--border);
+  background:#0a1120;color:var(--text)
+}
+
+/* Cart */
+.cart-items{
+  min-height:120px;border:1px dashed var(--border);border-radius:10px;padding:8px;background:#0a1120
+}
+.cart-items.empty{display:flex;align-items:center;justify-content:center;color:var(--muted)}
+.cart-row{
+  display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;
+  padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04)
+}
+.cart-row:last-child{border-bottom:none}
+.cart-row .line-total{font-weight:600}
+.cart-footer{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+.total{display:flex;align-items:center;gap:8px;color:var(--muted)}
+
+/* Buttons */
+.primary{background:var(--accent);color:white;border:none;padding:10px 14px;border-radius:10px;cursor:pointer}
+.primary:disabled{opacity:.55;cursor:not-allowed}
+
+.status{margin-top:10px;color:var(--muted)}
+.footer{padding:16px 0 90px;color:var(--muted);text-align:center} /* extra bottom padding for mobile bar */
+
+/* ----- Mobile bottom action bar (shows total + submit) ----- */
+.mobile-bar{
+  position:fixed;inset:auto 0 0 0;
+  display:none;gap:12px;align-items:center;justify-content:space-between;
+  padding:10px 14px;background:rgba(12,20,36,.96);border-top:1px solid var(--border);z-index:60
+}
+.mobile-bar .sum{color:var(--text)}
+@media (max-width: 880px){ .mobile-bar{display:flex} }
